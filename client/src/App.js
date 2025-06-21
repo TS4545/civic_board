@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import IssueForm from './components/IssueForm';
+import IssueList from './components/IssueList';
 
 function App() {
-  const [apiMessage, setApiMessage] = useState('');
+  const [issues, setIssues] = useState([]);
+
+  const fetchIssues = async () => {
+    try {
+      const res = await fetch('http://localhost:5000/api/issues');
+      const data = await res.json();
+      setIssues(data);
+    } catch (error) {
+      console.error('Error fetching issues:', error);
+    }
+  };
 
   useEffect(() => {
-    // Fetch message from backend
-    fetch('http://localhost:5000/api/message')
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => setApiMessage(data.message))
-      .catch((err) => {
-        console.error('Error fetching message from API:', err);
-        setApiMessage('Failed to connect to backend.');
-      });
+    fetchIssues();
   }, []);
+
+  const handleNewIssue = () => {
+    fetchIssues(); // re-fetch the list when a new issue is posted
+  };
 
   return (
     <div className="App">
       <h1>🗳️ Civic Board App</h1>
-      <p>
-        Backend says: <strong>{apiMessage || 'Loading...'}</strong>
-      </p>
+      <IssueForm onIssuePosted={handleNewIssue} />
+      <IssueList issues={issues} />
     </div>
   );
 }

@@ -4,17 +4,16 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Enable CORS so the React app can call this backend
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// ✅ Route that the React frontend will fetch
-app.get("/api/message", (req, res) => {
-  res.json({ message: "👋 Hello from the Civic API!" });
-});
+// ✅ Routes
+const issuesRouter = require('./routes/issues');
+app.use('/api/issues', issuesRouter);
 
-// Optional root route (for testing)
-app.get("/", (req, res) => {
+// Test route
+app.get('/', (req, res) => {
   res.send("Civic Engagement API is running.");
 });
 
