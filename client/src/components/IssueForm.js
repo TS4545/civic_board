@@ -7,7 +7,11 @@ function IssueForm({ onIssuePosted }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newIssue = { title, description };
+    const newIssue = {
+      title,
+      description,
+      username: "Tyler", // or use actual user input later
+    };
 
     try {
       const response = await fetch('http://localhost:5000/api/issues', {

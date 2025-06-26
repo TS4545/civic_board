@@ -1,34 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import IssueForm from './components/IssueForm';
-import IssueList from './components/IssueList';
+import './App.css';
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AccountPage from './pages/AccountPage';
+import './App.css';
 
 function App() {
-  const [issues, setIssues] = useState([]);
-
-  const fetchIssues = async () => {
-    try {
-      const res = await fetch('http://localhost:5000/api/issues');
-      const data = await res.json();
-      setIssues(data);
-    } catch (error) {
-      console.error('Error fetching issues:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchIssues();
-  }, []);
-
-  const handleNewIssue = () => {
-    fetchIssues(); // re-fetch the list when a new issue is posted
-  };
-
   return (
-    <div className="App">
-      <h1>🗳️ Civic Board App</h1>
-      <IssueForm onIssuePosted={handleNewIssue} />
-      <IssueList issues={issues} />
-    </div>
+    <Router>
+      <div className="app-container">
+        <nav>
+          <h1>🗳️ Civic Board</h1>
+          <div>
+            <Link to="/">Home</Link>
+            <Link to="/account">Account</Link>
+          </div>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/account" element={<AccountPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
