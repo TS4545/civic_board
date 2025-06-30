@@ -1,118 +1,273 @@
 
+.left-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px; /* wider */
+  height: 100vh;
+  background-color: white;
+  border-right: 1px solid #ddd;
+  box-sizing: border-box;
+  padding: 1rem 1rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1da1f2;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  margin-bottom: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sidebar-links a {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f5f8fa;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: #1da1f2;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.sidebar-links a:hover {
+  background-color: #e1e8ed;
+  cursor: pointer;
+}
+
+.main-layout {
+  margin-left: 220px; /* adjust to sidebar width */
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.content {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Add a gap between title and sidebar */
+
+/* Left bar (full height, white, aligned to left) */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  padding-top: 0;       /* no padding above */
+  padding-left: 1.5rem; /* left padding for links only */
+  padding-right: 1.5rem;
+}
+
+/* Make sure title has no padding/margin */
+.sidebar-title {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1da1f2;
+  user-select: none;
+}
+
+.sidebar a {
+  display: block;              /* make links fill horizontal space */
+  background-color: #f5f8fa;   /* light subtle background */
+  padding: 0.5rem 1rem;        /* space inside the box */
+  border-radius: 8px;          /* rounded corners */
+  color: #1da1f2;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.sidebar a:hover {
+  background-color: #e1e8ed;  /* slightly darker on hover */
+  cursor: pointer;
+}
+/* Main content stays centered */
+.main-layout {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 2rem; /* a bit more horizontal padding */
+}
+
+.content {
+  max-width: 900px; /* increased from 600px */
+  width: 100%;
+}
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+  background-color: #e6ecf0;
+  color: #0f1419;
 }
 
 .app-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1rem;
 }
-
 nav {
+  background-color: white;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+nav h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1da1f2;
+  letter-spacing: -0.5px;
+}
+
+nav .nav-links {
+  margin-top: 0.75rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #ddd;
+  justify-content: center;
+  gap: 2rem;
 }
 
-nav a {
-  margin-left: 1rem;
+nav .nav-links a {
   text-decoration: none;
-  color: #007bff;
+  color: #1da1f2;
   font-weight: 500;
+  font-size: 1rem;
 }
 
-nav a:hover {
+nav .nav-links a:hover {
   text-decoration: underline;
 }
 
-h1 {
-  font-size: 2rem;
-  color: #007bff;
+form {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  margin-bottom: 1.5rem;
 }
 
 form input,
 form textarea {
-  width: 100%;
+  width: 95%;
   padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
+  resize: vertical; /* allow vertical resizing */
+  overflow-wrap: break-word; /* wraps long words */
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 form button {
-  background-color: #007bff;
+  background-color: #1da1f2;
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 20px;
+  font-weight: bold;
   cursor: pointer;
+  float: right;
 }
 
 form button:hover {
-  background-color: #0056b3;
+  background-color: #1991da;
 }
-
 .issue-list {
   display: flex;
   flex-direction: column;
 }
 
 .issue-card {
-  background-color: #f0f4ff;
-  border-left: 4px solid #007bff;
-  border-radius: 10px;
   padding: 1rem 1.25rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  border-bottom: 1px solid #e6ecf0;
   transition: background-color 0.2s;
+
+  margin-bottom: .2rem;
 }
 
 .issue-card:hover {
-  background-color: #e6edff;
+  background-color: #f7f9fa;
 }
 
 .issue-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
-.issue-icon {
-  font-size: 1.5rem;
-}
-
-.issue-card h3 {
+.issue-header h3 {
   margin: 0;
-  font-size: 1.25rem;
-  color: #007bff;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .issue-card p {
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.issue-card time {
-  display: block;
-  font-size: 0.8rem;
-  color: #666;
-  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0.25rem 0;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .issue-meta {
-  font-size: 0.85rem;
-  color: #666;
+  font-size: 0.75rem;
+  color: #657786;
   margin-top: 0.5rem;
+}
+
+form::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.profile-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #f0f4f8;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.profile-box img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
 }
