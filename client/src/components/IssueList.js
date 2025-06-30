@@ -1,4 +1,5 @@
 import React from 'react';
+import IssueTag from './IssueTag';
 
 function IssueList({ issues }) {
   if (!issues.length) {
@@ -18,6 +19,7 @@ function IssueList({ issues }) {
           <div className="issue-meta">
             👤 <strong>{issue.username || "Anonymous"}</strong> &middot;{" "}
             <time>{issue.created_at ? new Date(issue.created_at).toLocaleString() : "Unknown time"}</time>
+            <span> | 🏷️ <IssueTag tag={issue.tag} /></span>
           </div>
         </div>
       ))}
