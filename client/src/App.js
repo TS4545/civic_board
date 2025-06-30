@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AccountPage from './pages/AccountPage';
 import InsightsPage from './pages/InsightsPage';
+import AiPage from './pages/AiPage';
+
 import './App.css';
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
             <Link to="/">Home</Link>
             <Link to="/insights">Insights</Link>
             <Link to="/account">Account</Link>
+            <Link to="/ai">AI</Link>
           </nav>
         </div>
       </aside>
@@ -31,6 +34,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/insights" element={<InsightsPage />} />
             <Route path="/account" element={<AccountPage />} />
+            <Route path="/ai" element={<AiPage />} />
           </Routes>
         </div>
       </main>
