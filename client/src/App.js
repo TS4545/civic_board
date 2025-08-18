@@ -13,11 +13,11 @@ function App() {
       <aside className="left-bar">
         <div className="sidebar">
           <div className="profile-box">
-            <img src="https://via.placeholder.com/40" alt="avatar" />
-            <div>Welcome, Tyler</div>
+            <img src="public\logo512.png" alt="avatar" />
+            <div>Welcome, User</div>
           </div>
 
-          <h1 className="sidebar-title">Civic Board</h1>
+          <h1 className="sidebar-title">Civly</h1>
 
           <nav className="sidebar-links">
             <Link to="/">Home</Link>
